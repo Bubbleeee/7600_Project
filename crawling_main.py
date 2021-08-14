@@ -164,4 +164,4 @@ if __name__ == '__main__':
     crawl = StockArticle(url)
     crawl.get_stock_article()
     t2 = time.time()
-    print('共耗时：' + str(int((t2 - t1) / 60)) + '分钟')
+    print('共耗时：' + str(int((t2 - t1) / 60)) + '分钟') 
