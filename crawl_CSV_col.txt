@@ -1,0 +1,32 @@
+import pandas as pd
+from sqlalchemy import create_engine
+import os
+from datetime import *
+import csv
+import datetime,time
+
+time.strftime('[%Y-%m-%d %H:%M:%S]', time.localtime(time.time()))
+
+crawl_data = pd.read_csv("8.5-17data.csv")
+len(crawl_data)#样本数
+
+crawl_data['Stock_ID_1']=0
+crawl_data['date']=0
+crawl_data['close_price']=0
+crawl_data['tech_mfi']=0
+crawl_data['MACD']=0
+crawl_data['BIAS']=0
+crawl_data['KDJ']=0
+crawl_data['MA']=0
+crawl_data['volume']=0
+crawl_data['amt']=0
+crawl_data['pct_chg']=0
+crawl_data['swing']=0
+
+for i in range(0,len(crawl_data)):
+    crawl_data.iloc[i,8]=crawl_data.iloc[i,4][0:4]+"-"+crawl_data.iloc[i,4][5:7]+"-"+crawl_data.iloc[i,4][8:10]
+    if  crawl_data.iloc[i,2][6:7] =='s':
+        crawl_data.iloc[i,7]=crawl_data.iloc[i,2][8:14]+"."+crawl_data.iloc[i,2][6:8].upper()
+    else:
+        crawl_data.iloc[i,7]=crawl_data.iloc[i,2][10:15]+"."+crawl_data.iloc[i,2][8:10].upper()
+
